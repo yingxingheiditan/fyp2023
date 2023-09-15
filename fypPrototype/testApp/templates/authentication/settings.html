@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row justify-content-center">
+    <h1 style="position: absolute;font-size:50px;margin-left: 1%;margin-top: 1%;"><a href="{% url 'profile' profile.pk %}"><i class="fa fa-arrow-left" style="color: #000;"></i></a></h1>
+    <h1 style="text-align: center;margin-top: 2%;font-size: 50px;">Profile Settings</h1>
+    <div class="col-md-4" style="margin-top: 2.5%;margin-bottom: 5%;">
+        <form id="settings_form" method="post", action="./settings/" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ profile_form.name|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ user_form.email|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.mon|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.tue|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.wed|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.thu|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.fri|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.sat|as_crispy_field }}
+            <div style="margin-bottom: 2.5%;"></div>
+            {{ exercise_form.sun|as_crispy_field }}
+            {% if settings_form.ValidationError %}
+            <p>{{ settings_form.validation_error }}</p>
+            {% endif %}
+            <div style="margin-top:2.5%;" class="d-grid gap-2">
+                <input class=" btn  btn-block" style="background-color:#A5F739;border:1px solid #000;" type="submit" value="Submit" />
+            </div>
+            </form>
+    </div>
+</div>
+{% endblock %}

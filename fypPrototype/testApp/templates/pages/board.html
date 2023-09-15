@@ -1,0 +1,28 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="container">
+    <div class="justify-content-center">
+        <div style="margin-top: 1%;display: flex;flex-direction: row;">
+            <p style="font-size: 20px;margin-left: 24%;">Rank</p>
+            <p style="font-size: 20px;margin-left: 10.5%;">User</p>
+            <p style="font-size: 20px;margin-left: 25%;">Streak</p>
+        </div>
+    </div>
+    {% for key, item in board_list.items %}
+    <div class="row justify-content-center mb-5">
+        <div style="background-color: #C6E59C; width: 55%;padding-top: 2%;padding-bottom: 2%;padding-left:3%;padding-right: 3%;display: flex;flex-direction: row;">
+            <p style="font-size: 40px;color: gray;margin-right: 5%; margin-top: 3%;margin-bottom: 0%;">{{ item.0 }}</p>
+            <img src="{{ item.1 }}" class="rounded-circle" width="100" height="100" />
+            <div style="margin-left: 3%;margin-top: 2%;">
+                <p style="font-size: 24px;"><a style="text-decoration: none;" class="text-primary" href="{% url 'profile' item.2 %}">@{{ item.3 }}</a></p>
+                {% if item.4 %}
+                <p style="font-size: 18px; margin: 0%;">{{ item.4 }}</p>
+                {% endif %}
+            </div>
+            <div style="margin-left:35%;"></div>
+            <p style="white-space: nowrap;font-size: 40px;margin-right: 5%; margin-top: 3%;margin-bottom: 0%;">{{ item.5 }} days</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
